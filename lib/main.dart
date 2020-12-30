@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './screens/splash_screen.dart';
-import './providers/auth.dart';
 import './screens/cart_screen.dart';
 import './screens/products_overview_screen.dart';
 import './screens/product_detail_screen.dart';
-import './providers/products.dart';
-import './providers/cart.dart';
-import './screens/cart_screen.dart';
-import './providers/orders.dart';
 import './screens/orders_screen.dart';
 import './screens/user_products_screen.dart';
 import './screens/edit_product_screen.dart';
 import './screens/auth_screen.dart';
+import './providers/products.dart';
+import './providers/cart.dart';
+import './providers/auth.dart';
+import './providers/orders.dart';
 import './helpers/custom_route_screen.dart';
 
 void main() => runApp(MyApp());
@@ -64,8 +63,9 @@ class MyApp extends StatelessWidget {
           home: auth.isAuth
               ? ProductOverviewScreen()
               : FutureBuilder(
-              // try to auto login, if still waiting for response show a loading screen
-              // else show the login screen
+              /*try to auto login, if still waiting for response show a loading screen
+              else show the login screen
+               */
                   future: auth.tryAutoLogin(),
                   builder: (ctx, authResult) =>
                     authResult.connectionState ==
@@ -73,7 +73,6 @@ class MyApp extends StatelessWidget {
                           ? SplashScreen()
                           : AuthScreen()
                 ),
-
           routes: {
             ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
             CartScreen.routeName: (ctx) => CartScreen(),

@@ -1,12 +1,15 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'dart:math';
 
 import '../providers/auth.dart';
 import '../models/http_exception.dart';
 
-enum AuthMode { Signup, Login }
+enum AuthMode {
+  Signup,
+  Login,
+}
 
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';
@@ -14,8 +17,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    // final transformConfig = Matrix4.rotationZ(-8 * pi / 180);
-    // transformConfig.translate(-10.0);
+
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       body: Stack(
@@ -99,12 +101,15 @@ class AuthCard extends StatefulWidget {
 }
 
 class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin {
+
   final GlobalKey<FormState> _formKey = GlobalKey();
   AuthMode _authMode = AuthMode.Login;
+
   Map<String, String> _authData = {
     'email': '',
     'password': '',
   };
+
   var _isLoading = false;
   final _passwordController = TextEditingController();
 
@@ -138,7 +143,6 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
           curve: Curves.easeIn,
         )
     );
-
     super.initState();
   }
 
@@ -272,8 +276,9 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                   controller: _passwordController,
                   validator: (value) {
                     if (value.isEmpty || value.length < 5) {
-                      return 'Password is too short!';
+                      return "Password is too short!";
                     }
+                    return null;
                   },
                   onSaved: (value) {
                     _authData['password'] = value;
@@ -300,6 +305,7 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                                   if (value != _passwordController.text) {
                                     return 'Passwords do not match!';
                                   }
+                                  return null;
                                 }
                               : null,
                         ),

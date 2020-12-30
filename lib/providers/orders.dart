@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-import './cart.dart';
-
 import 'dart:convert';
+
+import './cart.dart';
 
 class OrderItem {
   final String id;
@@ -66,6 +66,7 @@ class Orders with ChangeNotifier {
   Future<void> addOrder(List<CartItem> cartProducts, double total ) async {
     final url = "https://flutter-shop-project-6b9a9.firebaseio.com/orders/$userId.json?auth=$authToken";
     final timeStamp = DateTime.now();
+
     final response = await http.post(
       url,
       body: json.encode({
@@ -80,7 +81,6 @@ class Orders with ChangeNotifier {
                 })
             .toList(),
       }),
-      
     );
 
     // this can add the list in any index, ".add()" only add end of list

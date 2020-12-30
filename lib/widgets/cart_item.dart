@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/cart.dart';
 
 class CartItem extends StatelessWidget {
+
   final String id;
   final String productId;
   final double price;
@@ -32,7 +33,9 @@ class CartItem extends StatelessWidget {
       ),
       direction: DismissDirection.endToStart,
       confirmDismiss: (direction) {
-        // because "confirmDismiss" need to return Future object, showDialog did return that when dialog closed
+        /* because "confirmDismiss" need to return Future object, showDialog
+        did return that when dialog closed
+         */
         return showDialog(
             context: context,
             builder: (ctx) => AlertDialog(
@@ -54,7 +57,6 @@ class CartItem extends StatelessWidget {
                   },
                 ),
               ],
-
             )
         );
       },

@@ -13,6 +13,7 @@ class EditProductScreen extends StatefulWidget {
 }
 
 class _EditProductScreenState extends State<EditProductScreen> {
+
   final _priceFocusNode = FocusNode();
   final _descriptionFocusNode = FocusNode();
   final _imageUrlController = TextEditingController();
@@ -45,7 +46,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
+
     if(_isInit) {
       final productId = ModalRoute.of(context).settings.arguments as String;
 
@@ -78,7 +79,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
   void _updateImageUrl () {
     if(!_imageUrlFocusNode.hasFocus) {
-      // if user click other input field but the image field has no following pattern then dont update the screen (since it is wrong)
+      /* if user click other input field but the image field has no following pattern
+      then don't update the screen (since it is wrong)
+       */
       if((!_imageUrlController.text.startsWith("http") &&
               !_imageUrlController.text.startsWith("https")) ||
           (!_imageUrlController.text.endsWith(".png") &&
@@ -112,8 +115,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
             .addProduct(_editedProduct);
       } catch (error) {
 
-        // we using "await" here b/c we want to wait for this result (user clikc button)
-        // before we continue to "finally{}" block of code
+        /* we using "await" here b/c we want to wait for this result (user clikc button)
+         before we continue to "finally{}" block of code
+         */
         await showDialog<Null>(
             context: context,
             builder: (ctx) => AlertDialog(
@@ -129,12 +133,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
               ],
             ),
         );
-      } /*finally {
-        setState(() {
-          _isLoading = false;
-        });
-        Navigator.of(context).pop();
-      }*/
+      }
     }
     setState(() {
       _isLoading = false;
@@ -170,8 +169,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       decoration: InputDecoration(
                         labelText: "Title",
                       ),
-                      // when user press the place where "done" and "submit" suppose to on soft keyboard, will move to
-                      //                 // next input field instead of submit data
+
+                      /* when user press the place where "done" and "submit" suppose to
+                      on soft keyboard, will move to  next input field instead of submit data
+                       */
                       textInputAction: TextInputAction.next,
                       onFieldSubmitted: (_) {
                         FocusScope.of(context).requestFocus(_priceFocusNode);
@@ -328,7 +329,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   ],
                 ),
               ),
-            ),
+          ),
     );
   }
 }

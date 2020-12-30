@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -47,7 +48,6 @@ class _OrderItemState extends State<OrderItem> {
                   },
                 ),
             ),
-
               AnimatedContainer(
                 duration: Duration(milliseconds: 300),
 

@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/products_grid.dart';
 import '../widgets/badge.dart';
-import '../providers/cart.dart';
 import '../screens/cart_screen.dart';
+import '../providers/cart.dart';
 import '../providers/products.dart';
 
 enum FilterOptions {

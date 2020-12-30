@@ -5,6 +5,7 @@ import '../screens/edit_product_screen.dart';
 import '../providers/products.dart';
 
 class UserProductItem extends StatelessWidget {
+
   final String id;
   final String title;
   final String imageUrl;

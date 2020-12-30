@@ -6,11 +6,6 @@ import '../providers/products.dart';
 
 class ProductDetailScreen extends StatelessWidget {
 
-  /*final String title;
-
-  ProductDetailScreen(this.title);
-*/
-
   static const routeName = '/product-detail';
 
   @override
@@ -23,9 +18,7 @@ class ProductDetailScreen extends StatelessWidget {
     final loadedProduct = Provider.of<Products>(context,listen: false).findById(productId);
 
     return Scaffold(
-     /* appBar: AppBar(
-        title: Text(loadedProduct.title),
-      ),*/
+
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(

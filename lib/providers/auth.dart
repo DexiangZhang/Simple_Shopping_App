@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 import 'dart:convert';
 import 'dart:async';
@@ -14,8 +14,9 @@ class Auth with ChangeNotifier {
   Timer _authTimer;
 
   bool get isAuth {
-    // only return token (function), only return this token, when
-    // token not expired or has token existed
+    /* only return token (function), only return this token, when
+     token not expired or has token existed
+     */
     return token != null;
   }
 
