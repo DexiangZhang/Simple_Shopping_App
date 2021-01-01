@@ -47,7 +47,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MyShop'),
+        title: Text('All Products'),
         actions: <Widget>[
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
@@ -64,11 +64,21 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
             icon: Icon(Icons.more_vert,),
             itemBuilder: (ctx) => [
               PopupMenuItem(
-                child: Text("Only Favorites"),
+                textStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+                child: Text("Only Favorites Products"),
                 value: FilterOptions.Favorites,
               ),
               PopupMenuItem(
-                child: Text("Show All"),
+                textStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+                child: Text("Show All Products"),
                 value: FilterOptions.All,
               ),
             ],
@@ -94,9 +104,26 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ProductsGrid(_showOnlyFavorites),
-    );
-  }
+          : Stack(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
+                          Color.fromRGBO(255, 200, 117, 1).withOpacity(0.4),
+                        ],
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        stops: [0, 1],
+                      ),
+                    ),
+                  ),
+                  ProductsGrid(_showOnlyFavorites),
+                ],
+              )
+          );
+   }
 }
 
 

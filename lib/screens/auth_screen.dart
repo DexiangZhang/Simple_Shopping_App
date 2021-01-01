@@ -19,14 +19,14 @@ class AuthScreen extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
+      // use stack to show a background color and text is infront of background
       body: Stack(
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
+                  Color.fromRGBO(0, 255, 255, 1).withOpacity(0.5),
                   Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
                 ],
                 begin: Alignment.topLeft,
@@ -50,13 +50,12 @@ class AuthScreen extends StatelessWidget {
                           EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
                       transform: Matrix4.rotationZ(-8 * pi / 180)
                         ..translate(-10.0),
-                      // ..translate(-10.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.orangeAccent.shade200,
                         boxShadow: [
                           BoxShadow(
-                            blurRadius: 8,
+                            blurRadius: 10,
                             color: Colors.black26,
                             offset: Offset(0, 2),
                           )
@@ -68,18 +67,24 @@ class AuthScreen extends StatelessWidget {
                           color: Theme.of(context).accentTextTheme.headline6.color,
                           fontSize: 60,
                           fontFamily: 'Anton',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w100,
                         ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   Flexible(
                     flex: deviceSize.width > 600 ? 2 : 1,
                     child: AuthCard(),
                   ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Copyright Ⓒ 2020 DXZ. All Rights Reserved',
+                  )
                 ],
               ),
             ),
@@ -212,7 +217,7 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
       _showErrorDialog(errorMessage);
 
     } catch (error) {
-      const errorMessage = "Could not authenticate you. Please try again later";
+      const errorMessage = "Sorry could not authenticate. Please try again later";
 
       _showErrorDialog(errorMessage);
     }
@@ -276,7 +281,7 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                   controller: _passwordController,
                   validator: (value) {
                     if (value.isEmpty || value.length < 5) {
-                      return "Password is too short!";
+                      return "Password must be greater than 5 characters";
                     }
                     return null;
                   },
