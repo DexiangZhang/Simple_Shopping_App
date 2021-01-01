@@ -31,7 +31,7 @@ class ProductDetailScreen extends StatelessWidget {
               title: Text(
                 loadedProduct.title,
                 style: TextStyle(
-                  color: Colors.deepPurpleAccent,
+                  color: Colors.deepPurpleAccent.shade100,
                   fontSize: 20,
                 ),
               ),

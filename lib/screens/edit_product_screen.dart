@@ -157,8 +157,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : Padding(
-              padding: const EdgeInsets.all(16.0),
+          : Container(
+              color: Colors.brown.shade100,
+              padding: const EdgeInsets.all(20),
               child: Form(
                 key: _form,
                 child: ListView(
@@ -194,6 +195,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         }
                         return null;
                       },
+                    ),
+                    SizedBox(
+                      height: 35,
                     ),
                     TextFormField(
                       initialValue: _initValues["price"],
@@ -231,6 +235,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         return null;
                       },
                     ),
+                    SizedBox(
+                      height: 35,
+                    ),
                     TextFormField(
                       initialValue: _initValues["description"],
                       decoration: InputDecoration(
@@ -260,6 +267,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         return null;
                       },
                     ),
+                    SizedBox(
+                      height: 35,
+                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
@@ -277,7 +287,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             ),
                           ),
                           child: _imageUrlController.text.isEmpty
-                              ? Text("Preview Image")
+                              ? Text("Preview Image",textAlign: TextAlign.center,)
                               : FittedBox(
                                   child: Image.network(
                                     _imageUrlController.text,

@@ -49,8 +49,8 @@ class _OrderItemState extends State<OrderItem> {
                 ),
             ),
               AnimatedContainer(
+                color: Colors.tealAccent.shade100,
                 duration: Duration(milliseconds: 300),
-
                 // it will take whatever is smaller value inside "min( , )", left side require "double" value
                 height: _expanded ? min(widget.order.products.length * 20.0 + 20, 100) : 0,
                 padding: EdgeInsets.symmetric(
